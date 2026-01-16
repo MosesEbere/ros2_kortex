@@ -67,7 +67,8 @@ def launch_setup(context, *args, **kwargs):
     )
 
     rviz_config_file = PathJoinSubstitution(
-        [FindPackageShare(description_package), "rviz", "view_robot.rviz"]
+        # [FindPackageShare(description_package), "rviz", "view_robot_test.rviz"]
+        [FindPackageShare(description_package), "rviz", "spatial_cbf_test.rviz"]
     )
 
     robot_description_content = Command(
@@ -221,7 +222,7 @@ def launch_setup(context, *args, **kwargs):
             [FindPackageShare("ros_gz_sim"), "/launch/gz_sim.launch.py"]
         ),
         launch_arguments={
-            "gz_args": " -r -v 3 empty.sdf --physics-engine gz-physics-bullet-featherstone-plugin"
+            "gz_args": " -r -v 3 empty.sdf -s --physics-engine gz-physics-bullet-featherstone-plugin"
         }.items(),
         condition=IfCondition(sim_gazebo),
     )
